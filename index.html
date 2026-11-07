@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17154b" />
+  <title>Johnny Builds to Mars</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="book-shell" aria-label="Johnny Builds to Mars interactive storybook">
+    <div class="book-topbar">
+      <button class="icon-button" id="soundToggle" type="button" aria-label="Turn sound on" aria-pressed="false">🔈</button>
+      <div class="page-dots" id="pageDots" aria-label="Story pages"></div>
+      <button class="icon-button" id="helpButton" type="button" aria-label="Show how to play">?</button>
+    </div>
+
+    <section class="book-stage" id="bookStage">
+      <div class="scene scene-cover is-active" data-page="0">
+        <div class="shooting-star star-one">✦</div>
+        <div class="shooting-star star-two">✦</div>
+        <div class="cover-moon"></div>
+        <div class="cover-stars">✦　·　✧　·　✦　·　✧</div>
+        <div class="cover-art" aria-hidden="true">
+          <div class="planet planet-mars"><span></span></div>
+          <div class="planet planet-earth"><span></span></div>
+          <div class="astronaut astronaut-cover"><div class="helmet"></div><div class="body"></div><div class="flag">★</div></div>
+          <div class="rocket rocket-cover"><div class="window">☺</div><div class="fin fin-left"></div><div class="fin fin-right"></div><div class="flame"></div></div>
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        </div>
+        <div class="cover-copy">
+          <p class="eyebrow">An interactive pop-up adventure</p>
+          <h1>Johnny<br /><span>Builds to Mars</span></h1>
+          <p class="cover-byline">A story you can tap, drag, and play!</p>
+          <button class="primary-button pulse-button" id="startButton" type="button"><span>🚀</span> Start the adventure</button>
+        </div>
+        <div class="cover-footer">Written for curious explorers everywhere</div>
+      </div>
+
+      <div class="scene scene-space" data-page="1" aria-hidden="true">
+        <div class="scene-copy">
+          <p class="chapter-label">Page 1 · Look up!</p>
+          <h2>Johnny spots a<br /><span>red planet</span>.</h2>
+          <p>Tap Mars in the sky to help Johnny find his next big adventure.</p>
+        </div>
+        <div class="space-window">
+          <div class="space-sun"></div><div class="orbit orbit-solar"></div>
+          <div class="space-planet planet-blue"></div>
+          <button class="space-planet planet-red mars-target" id="marsTarget" type="button" aria-label="Mars, tap to spot it"><span class="planet-ring"></span><b>MARS</b></button>
+          <div class="space-star s1">✦</div><div class="space-star s2">✧</div><div class="space-star s3">✦</div><div class="space-star s4">·</div><div class="space-star s5">✧</div>
+          <div class="astronaut astronaut-float"><div class="helmet"></div><div class="body"></div><div class="backpack"></div></div>
+        </div>
+        <div class="speech-bubble" id="spaceMessage">Hmm... what is that twinkling red dot?</div>
+        <div class="sparkle-layer" id="sparkleLayer"></div>
+      </div>
+
+      <div class="scene scene-pack" data-page="2" aria-hidden="true">
+        <div class="scene-copy">
+          <p class="chapter-label">Page 2 · Pack up</p>
+          <h2>Every explorer<br />needs a <span>pack</span>.</h2>
+          <p>Drag the supplies into Johnny's backpack. On a touch screen, tap an item, then tap the pack.</p>
+        </div>
+        <div class="packing-table">
+          <div class="table-line"></div>
+          <div class="supply supply-water" draggable="true" data-supply="water" tabindex="0" role="button" aria-label="Water bottle"><span>💧</span><small>water</small></div>
+          <div class="supply supply-map" draggable="true" data-supply="map" tabindex="0" role="button" aria-label="Map"><span>🗺️</span><small>map</small></div>
+          <div class="supply supply-camera" draggable="true" data-supply="camera" tabindex="0" role="button" aria-label="Camera"><span>📷</span><small>camera</small></div>
+          <div class="supply supply-helmet" draggable="true" data-supply="helmet" tabindex="0" role="button" aria-label="Space helmet"><span>🪐</span><small>helmet</small></div>
+          <div class="backpack-drop" id="backpackDrop" tabindex="0" role="button" aria-label="Johnny's backpack"><div class="backpack-pocket"></div><div class="backpack-badge">J</div><div class="backpack-items" id="backpackItems"></div></div>
+          <div class="tiny-johnny"><div class="helmet"></div><div class="body"></div></div>
+        </div>
+        <div class="progress-card"><span id="packCount">0</span>/4 supplies packed <div class="mini-progress"><i id="packProgress"></i></div></div>
+        <div class="toast-message" id="packMessage">Let's get ready for liftoff!</div>
+      </div>
+
+      <div class="scene scene-build" data-page="3" aria-hidden="true">
+        <div class="scene-copy">
+          <p class="chapter-label">Page 3 · Build it</p>
+          <h2>Piece by piece,<br />a <span>rocket</span>!</h2>
+          <p>Tap or drag the pieces onto Johnny's rocket blueprint.</p>
+        </div>
+        <div class="rocket-workbench">
+          <div class="blueprint-grid"></div>
+          <div class="rocket-ghost"><div class="ghost-nose"></div><div class="ghost-window"></div><div class="ghost-body"></div><div class="ghost-fin left"></div><div class="ghost-fin right"></div></div>
+          <div class="rocket-part part-nose" data-part="nose" draggable="true" tabindex="0" role="button" aria-label="Rocket nose"><span>🔺</span><small>nose</small></div>
+          <div class="rocket-part part-window" data-part="window" draggable="true" tabindex="0" role="button" aria-label="Rocket window"><span>🔵</span><small>window</small></div>
+          <div class="rocket-part part-fin" data-part="fin" draggable="true" tabindex="0" role="button" aria-label="Rocket fins"><span>🪽</span><small>fins</small></div>
+          <div class="rocket-part part-engine" data-part="engine" draggable="true" tabindex="0" role="button" aria-label="Rocket engine"><span>🔥</span><small>engine</small></div>
+          <button class="built-rocket" id="builtRocket" type="button" aria-label="Finished rocket"><div class="built-nose"></div><div class="built-window">☺</div><div class="built-body"></div><div class="built-fin left"></div><div class="built-fin right"></div><div class="built-flame"></div></button>
+        </div>
+        <div class="build-status" id="buildStatus">0 of 4 pieces in place</div>
+      </div>
+
+      <div class="scene scene-launch" data-page="4" aria-hidden="true">
+        <div class="launch-copy">
+          <p class="chapter-label">Page 4 · Blast off</p>
+          <h2>Ready...<br /><span>set... GO!</span></h2>
+          <p>Tap Johnny's rocket to launch toward Mars.</p>
+        </div>
+        <div class="launch-sky"><div class="launch-moon"></div><div class="launch-star ls1">✦</div><div class="launch-star ls2">✧</div><div class="launch-star ls3">✦</div><div class="launch-star ls4">·</div></div>
+        <button class="launch-rocket" id="launchRocket" type="button" aria-label="Launch rocket"><div class="launch-window">☺</div><div class="launch-fin left"></div><div class="launch-fin right"></div><div class="launch-fire"></div></button>
+        <div class="countdown" id="countdown" aria-live="polite">Tap the rocket!</div>
+        <div class="launch-ground"><div class="launch-tower"></div><div class="smoke sm1"></div><div class="smoke sm2"></div><div class="smoke sm3"></div></div>
+      </div>
+
+      <div class="scene scene-mars" data-page="5" aria-hidden="true">
+        <div class="scene-copy mars-copy">
+          <p class="chapter-label">Page 5 · Hello, Mars!</p>
+          <h2>One small step<br />for <span>Johnny</span>...</h2>
+          <p>Explore the red planet. Tap the rocks, rover, and flag!</p>
+        </div>
+        <div class="mars-landscape">
+          <div class="mars-sun"></div><div class="mars-earth-dot">·</div><div class="mars-mountain mountain-a"></div><div class="mars-mountain mountain-b"></div><div class="mars-ground"></div>
+          <button class="mars-object rock rock-a" type="button" aria-label="Tap the space rock">✦</button>
+          <button class="mars-object rover" type="button" aria-label="Tap the rover"><span>🤖</span></button>
+          <button class="mars-object flag-object" type="button" aria-label="Tap the Mars flag">🚩</button>
+          <div class="astronaut astronaut-mars"><div class="helmet"></div><div class="body"></div><div class="backpack"></div><div class="boot boot-a"></div><div class="boot boot-b"></div></div>
+          <div class="mars-crater crater-a"></div><div class="mars-crater crater-b"></div>
+        </div>
+        <div class="mars-message" id="marsMessage">Mars is full of surprises!</div>
+        <div class="snack-alert" id="snackAlert"><span>🍪</span><div><strong>Oh no!</strong><br />Johnny forgot his snacks.</div></div>
+      </div>
+    </section>
+
+    <nav class="book-controls" aria-label="Story navigation">
+      <button class="nav-button" id="prevButton" type="button" disabled>← <span>Back</span></button>
+      <div class="page-number" id="pageNumber">Cover</div>
+      <button class="nav-button" id="nextButton" type="button"><span>Next</span> →</button>
+    </nav>
+  </main>
+
+  <div class="modal-backdrop" id="helpModal" hidden>
+    <div class="help-card" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <button class="close-button" id="closeHelp" type="button" aria-label="Close help">×</button>
+      <div class="help-icon">🪐</div><h2 id="helpTitle">How to play</h2>
+      <p>Tap glowing objects, drag supplies, and follow Johnny's adventure from Earth to Mars.</p>
+      <div class="help-row"><span>👆</span><b>Tap</b><small>to discover surprises</small></div>
+      <div class="help-row"><span>✋</span><b>Drag</b><small>to pack and build</small></div>
+      <div class="help-row"><span>🔊</span><b>Sound</b><small>can be turned on or off</small></div>
+      <button class="primary-button" id="gotItButton" type="button">Let's go!</button>
+    </div>
+  </div>
+  <div class="sr-only" id="liveRegion" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
